@@ -160,7 +160,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/nathanlamplough/AutoFH/blob/master/LICENSE) file for details
 
 ## Acknowledgments
 * A lot of inspiration and research ideas were taken from the [AutoML](https://www.automl.org/) group 
