@@ -143,11 +143,7 @@ To run a test file type `pytest AutoFH_Unit_Tests.py` (Replace `AutoFH_Unit_Test
 * [Bayes_Opt](https://github.com/fmfn/BayesianOptimization) - Bayesian Optmisation framework
 * [PyTorch](https://pytorch.org/) - Machine learning framework
 * [sci-kit learn](https://scikit-learn.org/) - Machine learning framework
-* [SQLAlchemy] (https://www.sqlalchemy.org/) - Database framework
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [SQLAlchemy](https://www.sqlalchemy.org/) - Database framework
 
 ## Version
 
