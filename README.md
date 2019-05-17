@@ -20,15 +20,15 @@ These instructions will get you a copy of AutoFH up and running on your local ma
 
 ### Prerequisites
 
-Anaconda - https://www.anaconda.com/distribution/#windows
+Anaconda - https://www.anaconda.com/distribution/#windows (Includes sci-kit learn, numpy and pandas)
 
 Bayes Opt - `pip install bayesian-optimization`
 
 PyTorch - `conda install pytorch torchvision cudatoolkit=10.0 -c pytorch` (Anaconda will automatically install prequisites for PyTorch)
 
-sci-kit Learn - `pip install scikit-learn`
-
 SQLAlchemy - `pip install SQLAlchemy`
+
+Progress Bar - `pip install progress'
 
 ### Installing
 
