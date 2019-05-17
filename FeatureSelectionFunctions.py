@@ -13,19 +13,26 @@ from progress.bar import Bar
 warnings.filterwarnings('ignore')
 
 class Genetic_Algorithm():
-
     def __init__(self, X , Y, p, pop_size, iter):
+        #probability of turning off a feature
         self.p = p
         self.X = X
         self.Y = Y
         self.n_features = X.shape[1]
+        #the size of the population
         self.pop_size = pop_size
+        #the best feature set
         self.chromosomes_best = []
+        #the best score
         self.scores_best = []
+        #the average score per iteration
         self.scores_avg = []
+        #the probability of changing a feature in the mutation phase
         self.mutation_rate = 1 / self.n_features
+        #the number of iterations it is ran for
         self.iterations = iter
 
+    #runs the genetic algorithm for specified iterations
     def compute_GA(self):
         population = np.empty(0)
         last_score = 0
@@ -36,6 +43,9 @@ class Genetic_Algorithm():
             last_score = self.scores_best[i]
 
         bar.finish()
+
+    #intialises the first population by switching off some
+    #features
     def intialisation(self, p, n_features, pop_size):
         pop_switches = []
         while(len(pop_switches) != pop_size):
@@ -44,10 +54,7 @@ class Genetic_Algorithm():
                 pop_switches.append(switches)
         return np.asarray(pop_switches)
 
-    def split_data(self, X, pop_size):
-        indices = np.random.permutation(X.shape[0])
-        #return np.array_split(indices, pop_size)
-
+    #measures the fitness of each population using naive bayes
     def fitness(self, X, Y, pop_size, switches):
         clf = GaussianNB()
         fitnesses = np.empty(0)
@@ -64,6 +71,8 @@ class Genetic_Algorithm():
 
         return fitnesses[sorted_indices], switches[sorted_indices]
 
+    #selects a combination of the best and random features sets
+    #from the population
     def selection(self, pop_size, switches_, fitness_scores):
         selected = []
         switches = switches_
@@ -79,18 +88,26 @@ class Genetic_Algorithm():
             selected.append(i)
         return selected
 
+    #used as part of selection to choose random feature subsets
+    #with a probability based on fitness
     def roulette(self, switches, n, fitness_scores):
         selected = []
         probs = []
         indices = []
         for i in range(n):
+            #probabilities of each feature set from the population
+            #calculated
             probs = fitness_scores / fitness_scores.sum()
             indices = np.arange(fitness_scores.shape[0])
+            #a random index value is chosen with probabilties based on fiteness used
             choice = np.random.choice(indices, p = probs)
             selected.append(choice)
+            #the chosen index value feature set is deleted so it cant be rechosen
             fitness_scores = np.delete(fitness_scores, choice, axis = 0)
         return switches[selected]
 
+    #combined features subsets from the population for the next
+    #iteration
     def crossover(self, switches, pop_size):
         population_next = []
         switches = list(switches)
@@ -107,6 +124,7 @@ class Genetic_Algorithm():
                 break
         return population_next
 
+    #randomly turns off and on features that have crossovered
     def mutate(self, population):
         population_next = []
         for i in range(len(population)):
@@ -116,6 +134,7 @@ class Genetic_Algorithm():
             population_next.append(switch)
         return population_next
 
+    #runs all the functions together, this is 1 iteration
     def generate(self):
         # Selection, crossover and mutation
         population = self.intialisation(self.p, self.n_features, self.pop_size)
@@ -130,10 +149,12 @@ class Genetic_Algorithm():
 
         return population
 
+    #sorts the best scores and returns the best feature set
     def get_best(self):
         best_index = np.argmax(self.scores_best)
         best_mask = self.chromosomes_best[best_index]
         return self.X[:,best_mask]
+
 
 def correlation_feature_selection(data_df, threshold, y_index):
     corr_matrix = data_df.corr()

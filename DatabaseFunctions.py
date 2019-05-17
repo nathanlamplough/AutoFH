@@ -9,7 +9,7 @@ import LandmarkMetaFunctions as LMF
 import base64
 
 
-engine = create_engine('mssql+pyodbc://natha:@MetaFeature')
+engine = create_engine('sqlite:///DB\\MetaFeatures.db')
 connection = engine.connect()
 metadata = db.MetaData()
 Base = declarative_base()
