@@ -28,7 +28,7 @@ PyTorch - `conda install pytorch torchvision cudatoolkit=10.0 -c pytorch` (Anaco
 
 SQLAlchemy - `pip install SQLAlchemy`
 
-Progress Bar - `pip install progress'
+Progress Bar - `pip install progress`
 
 ### Installing
 
