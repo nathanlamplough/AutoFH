@@ -158,6 +158,4 @@ To run a test file type `pytest AutoFH_Unit_Tests.py` (Replace `AutoFH_Unit_Test
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/nathanlamplough/AutoFH/blob/master/LICENSE) file for details
 
-## Acknowledgments
-* A lot of inspiration and research ideas were taken from the [AutoML](https://www.automl.org/) group 
 
